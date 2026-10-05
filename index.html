@@ -4,114 +4,260 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ZOVA Group</title>
-<meta name="description" content="ZOVA Group — software for small businesses, starting with Biznex." />
+<meta name="description" content="ZOVA Group builds practical, offline-first software for small and growing businesses — starting with Biznex." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 209.86 45.25'%3E%3Cg fill='%23a46f3d'%3E%3Cpolygon points='16.35 37.2 44.97 37.2 44.97 45.25 0 45.25 6.2 37.2 28.62 8.06 0 8.06 0 0 44.97 0 38.77 8.06 16.35 37.2'/%3E%3Cpolygon points='209.86 45.23 200.85 45.23 187.17 17.96 173.48 45.23 164.48 45.23 182.67 8.99 187.17 .02 191.67 8.99 209.86 45.23'/%3E%3Cpolygon points='111.5 .02 120.51 .02 134.19 27.28 147.88 .02 156.88 .02 138.69 36.26 134.19 45.23 129.68 36.26 111.5 .02'/%3E%3Cpath d='M78.34,0C65.85,0,55.72,10.13,55.72,22.62s10.13,22.62,22.62,22.62,22.62-10.13,22.62-22.62S90.83,0,78.34,0ZM78.34,37.19c-8.03,0-14.57-6.54-14.57-14.57s6.54-14.57,14.57-14.57,14.57,6.54,14.57,14.57-6.54,14.57-14.57,14.57Z'/%3E%3C/g%3E%3C/svg%3E" />
 <style>
   :root {
-    --brand: #a46f3d;
-    --ink: #1f2937;
-    --muted: #6b7280;
-    --bg: #faf8f5;
+    --zova: #a46f3d;
+    --zova-ink: #7c5329;
+    --biz-a: #00bcf2;
+    --biz-b: #3a59a8;
+    --biz-c: #5c50a1;
+    --biz-ink: #03002f;
+
+    --ink: #221c14;
+    --muted: #6b645a;
+    --faint: #948c7f;
+    --bg: #fbf9f6;
     --card: #ffffff;
-    --border: #e7e1d8;
+    --card-muted: #f4f0ea;
+    --border: #e9e2d7;
+    --shadow: 0 1px 2px rgba(34, 28, 20, 0.04), 0 8px 24px -12px rgba(34, 28, 20, 0.12);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --ink: #f3f1ed;
-      --muted: #a8a29a;
-      --bg: #17140f;
-      --card: #211c15;
-      --border: #332c20;
+      --ink: #f3efe8;
+      --muted: #b5ac9c;
+      --faint: #8a8171;
+      --bg: #15120d;
+      --card: #1d1811;
+      --card-muted: #241e16;
+      --border: #332a1d;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
     }
   }
   :root[data-theme="dark"] {
-    --ink: #f3f1ed;
-    --muted: #a8a29a;
-    --bg: #17140f;
-    --card: #211c15;
-    --border: #332c20;
+    --ink: #f3efe8;
+    --muted: #b5ac9c;
+    --faint: #8a8171;
+    --bg: #15120d;
+    --card: #1d1811;
+    --card-muted: #241e16;
+    --border: #332a1d;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
   }
+
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
+
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom: 1px solid var(--border);
   }
-  header {
-    padding: 40px 0 20px;
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
   }
-  .logo {
-    height: 34px;
-    width: auto;
-    display: block;
-  }
-  main {
-    padding: 48px 0 80px;
-  }
-  h1 {
-    font-size: clamp(2rem, 5vw, 2.75rem);
-    line-height: 1.15;
-    margin: 0 0 16px;
-    letter-spacing: -0.01em;
-  }
-  .lede {
-    font-size: 1.15rem;
+  .logo-mark { height: 24px; width: auto; display: block; }
+  nav.links { display: flex; gap: 28px; }
+  nav.links a {
     color: var(--muted);
-    max-width: 60ch;
-    margin: 0 0 40px;
-  }
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 16px;
-    margin-top: 32px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px;
-  }
-  .card h2 {
-    font-size: 1.05rem;
-    margin: 0 0 8px;
-  }
-  .card p {
+    text-decoration: none;
     font-size: 0.92rem;
-    color: var(--muted);
-    margin: 0;
+    font-weight: 500;
+    transition: color 0.15s ease;
   }
-  .badge {
-    display: inline-block;
-    font-size: 0.72rem;
+  nav.links a:hover { color: var(--ink); }
+  @media (max-width: 640px) {
+    nav.links { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 96px 0 84px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    right: -120px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--zova) 16%, transparent), transparent);
+    pointer-events: none;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--brand);
-    background: color-mix(in srgb, var(--brand) 14%, transparent);
+    color: var(--zova-ink);
+    background: color-mix(in srgb, var(--zova) 13%, transparent);
     border-radius: 999px;
-    padding: 4px 10px;
-    margin-bottom: 10px;
+    padding: 6px 14px 6px 10px;
+    margin-bottom: 22px;
   }
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 24px 0 40px;
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--zova);
+  }
+  h1.hero-title {
+    font-size: clamp(2.2rem, 5.4vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 0 0 20px;
+    max-width: 18ch;
+  }
+  p.hero-lede {
+    font-size: 1.18rem;
     color: var(--muted);
-    font-size: 0.85rem;
+    max-width: 56ch;
+    margin: 0 0 34px;
   }
-  a { color: var(--brand); }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 11px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--zova);
+    color: #fff;
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: var(--zova-ink); }
+  .btn-ghost {
+    color: var(--ink);
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+  .btn-ghost:hover { border-color: var(--zova); color: var(--zova-ink); }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 70px 0; }
+  section.alt { background: var(--card-muted); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section-head { max-width: 56ch; margin: 0 0 42px; }
+  .section-kicker {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--zova-ink);
+    margin: 0 0 10px;
+  }
+  h2.section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+  }
+  .section-sub { color: var(--muted); margin: 0; font-size: 1.02rem; }
+
+  /* ---------- Products ---------- */
+  .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .product-card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: var(--shadow);
+  }
+  .product-card.ghost {
+    box-shadow: none;
+    background: transparent;
+    border-style: dashed;
+  }
+  .product-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .product-icon svg { width: 20px; height: 20px; }
+  .status-pill {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+  }
+  .status-live { color: #0a7a3f; background: rgba(16, 163, 74, 0.13); }
+  .status-soon { color: var(--faint); background: var(--card-muted); border: 1px solid var(--border); }
+  .product-card h3 { font-size: 1.08rem; margin: 0 0 8px; }
+  .product-card p { font-size: 0.93rem; color: var(--muted); margin: 0; }
+
+  /* ---------- Principles ---------- */
+  .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+  .principle svg { width: 22px; height: 22px; color: var(--zova); margin-bottom: 14px; }
+  .principle h3 { font-size: 1rem; margin: 0 0 6px; }
+  .principle p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+  /* ---------- CTA ---------- */
+  .cta-box {
+    background: linear-gradient(135deg, var(--zova), var(--zova-ink));
+    border-radius: 22px;
+    padding: 48px 36px;
+    color: #fff;
+    text-align: center;
+  }
+  .cta-box h2 { margin: 0 0 10px; font-size: clamp(1.4rem, 3vw, 1.8rem); }
+  .cta-box p { margin: 0 0 24px; opacity: 0.88; font-size: 1rem; }
+  .cta-box a.btn-primary { background: #fff; color: var(--zova-ink); box-shadow: none; }
+  .cta-box a.btn-primary:hover { background: #f5ede3; }
+
+  footer.site {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 44px;
+  }
+  .foot-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer.site .logo-mark { height: 18px; opacity: 0.8; }
+  footer.site a { color: var(--muted); text-decoration: none; font-size: 0.86rem; }
+  footer.site a:hover { color: var(--zova-ink); }
+  .copyright { color: var(--faint); font-size: 0.82rem; }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <svg class="logo" viewBox="0 0 209.86 45.25" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZOVA">
+
+  <header class="site">
+    <div class="wrap nav">
+      <svg class="logo-mark" viewBox="0 0 209.86 45.25" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZOVA">
         <g fill="#a46f3d">
           <polygon points="16.35 37.2 44.97 37.2 44.97 45.25 0 45.25 6.2 37.2 28.62 8.06 0 8.06 0 0 44.97 0 38.77 8.06 16.35 37.2"/>
           <polygon points="209.86 45.23 200.85 45.23 187.17 17.96 173.48 45.23 164.48 45.23 182.67 8.99 187.17 .02 191.67 8.99 209.86 45.23"/>
@@ -119,38 +265,133 @@
           <path d="M78.34,0C65.85,0,55.72,10.13,55.72,22.62s10.13,22.62,22.62,22.62,22.62-10.13,22.62-22.62S90.83,0,78.34,0ZM78.34,37.19c-8.03,0-14.57-6.54-14.57-14.57s6.54-14.57,14.57-14.57,14.57,6.54,14.57,14.57-6.54,14.57-14.57,14.57Z"/>
         </g>
       </svg>
-    </header>
+      <nav class="links">
+        <a href="#products">Products</a>
+        <a href="#platform">Platform</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-      <span class="badge">Building in public</span>
-      <h1>Software for small businesses, built to last.</h1>
-      <p class="lede">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span>Building in public</span>
+      <h1 class="hero-title">Software for small businesses, built to last.</h1>
+      <p class="hero-lede">
         ZOVA is a software group building practical, offline-first tools for small and growing
-        businesses — starting with Biznex, a business management app for sales, inventory, and
-        accounts that works whether or not the internet does.
+        businesses. One account, one shared platform, multiple products — starting with
+        <strong>Biznex</strong>, a business management app that works whether or not the internet does.
       </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#products">See what we're building</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
 
-      <div class="cards">
-        <div class="card">
-          <h2>Biznex</h2>
-          <p>Sales, purchases, inventory, customers, suppliers, and accounting in one offline-first
-          desktop app. In active development.</p>
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Products</p>
+        <h2 class="section-title">One platform, built product by product.</h2>
+        <p class="section-sub">Biznex is first. Each product that follows shares the same account, sync, and security foundation underneath.</p>
+      </div>
+      <div class="products">
+        <div class="product-card">
+          <span class="status-pill status-live">In development</span>
+          <div class="product-icon" style="background: linear-gradient(135deg, var(--biz-a), var(--biz-b));">
+            <svg viewBox="0 0 100.52 161.36" xmlns="http://www.w3.org/2000/svg"><g fill="#fff"><path d="M.99,16.36v64.24s16.66-25.72,47.74-20.22L.99,16.36Z"/><path d="M91.13,65.89l-20.42,12.37-.02.02c-4.02-1.9-7.94-3.81-11.74-5.71-19.05-9.53-35.11-19.03-45.33-28.47-4.97-4.59-8.6-10.48-10.53-16.98C-2.1,9.67,2.06.6,15.35.01c1.72-.08,3.44.26,5.02.96l68.6,30.49c14.37,6.38,15.62,26.28,2.17,34.43Z"/><path d="M70.73,78.27h-.02s-.02,0-.02,0c-4.02-1.9-7.94-3.81-11.74-5.71l-34.19,21.06C11.25,101.95,2.43,116.04.79,131.71c14.08-32.26,62.94-50.91,69.94-53.44Z"/><path d="M89.2,87.6l-18.47-9.34c-7,2.53-55.86,21.19-69.94,53.44-.11,1.03-.19,2.07-.23,3.11L.01,147.19c-.46,10.52,10.72,17.52,19.98,12.52l69.69-37.6c13.83-7.47,13.56-27.41-.47-34.5Z"/></g></svg>
+          </div>
+          <h3>Biznex</h3>
+          <p>Sales, purchases, inventory, customers, suppliers, and accounting in one offline-first desktop app — built for how small shops actually run.</p>
         </div>
-        <div class="card">
-          <h2>Local-first</h2>
-          <p>Your data lives on your machine first. The cloud catches up — not the other way
-          around.</p>
+
+        <div class="product-card ghost">
+          <span class="status-pill status-soon">Planned</span>
+          <div class="product-icon" style="background: var(--card-muted); border: 1px solid var(--border);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h3v-6h6v6h3a1 1 0 0 0 1-1v-9"/></svg>
+          </div>
+          <h3 style="color: var(--faint);">Restaura</h3>
+          <p>Restaurant POS and management. Not started yet.</p>
         </div>
-        <div class="card">
-          <h2>Built for Bangladesh, ready for more</h2>
-          <p>Designed around how small businesses here actually work, with room to grow beyond.</p>
+
+        <div class="product-card ghost">
+          <span class="status-pill status-soon">Planned</span>
+          <div class="product-icon" style="background: var(--card-muted); border: 1px solid var(--border);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1 7h4l-8 11 2-8H8l1-10z"/></svg>
+          </div>
+          <h3 style="color: var(--faint);">Labex</h3>
+          <p>Diagnostic and laboratory management. Not started yet.</p>
+        </div>
+
+        <div class="product-card ghost">
+          <span class="status-pill status-soon">Planned</span>
+          <div class="product-icon" style="background: var(--card-muted); border: 1px solid var(--border);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--faint)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </div>
+          <h3 style="color: var(--faint);">Stocky</h3>
+          <p>Inventory and stock management. Not started yet.</p>
         </div>
       </div>
-    </main>
+    </div>
+  </section>
 
-    <footer>
-      © 2026 ZOVA Group. Get in touch: <a href="mailto:mdmizanur.pub@gmail.com">mdmizanur.pub@gmail.com</a>
-    </footer>
-  </div>
+  <section id="platform" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-kicker">Platform</p>
+        <h2 class="section-title">Built once, underneath everything.</h2>
+        <p class="section-sub">Every ZOVA product shares the same account, sync, and security layer — so the second product never starts from zero.</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <h3>Local-first</h3>
+          <p>Your data lives on your machine first and syncs when it can. A slow or missing connection never stops the register.</p>
+        </div>
+        <div class="principle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <h3>Secure by design</h3>
+          <p>Multi-tenant from day one — your business's data stays isolated, with real permission checks on every operation.</p>
+        </div>
+        <div class="principle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>Fast, always</h3>
+          <p>Instant navigation and local reads. The cloud catches up in the background — never the thing you wait on.</p>
+        </div>
+        <div class="principle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          <h3>Bangladesh-first, global-ready</h3>
+          <p>Designed around how small businesses here actually operate, with the architecture to grow well beyond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2>Building something for your business?</h2>
+        <p>We're early, and we'd like to hear from you — whether that's feedback, a question, or just curiosity.</p>
+        <a class="btn btn-primary" href="mailto:mdmizanur.pub@gmail.com">Email us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap foot-row">
+      <svg class="logo-mark" viewBox="0 0 209.86 45.25" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZOVA">
+        <g fill="#a46f3d">
+          <polygon points="16.35 37.2 44.97 37.2 44.97 45.25 0 45.25 6.2 37.2 28.62 8.06 0 8.06 0 0 44.97 0 38.77 8.06 16.35 37.2"/>
+          <polygon points="209.86 45.23 200.85 45.23 187.17 17.96 173.48 45.23 164.48 45.23 182.67 8.99 187.17 .02 191.67 8.99 209.86 45.23"/>
+          <polygon points="111.5 .02 120.51 .02 134.19 27.28 147.88 .02 156.88 .02 138.69 36.26 134.19 45.23 129.68 36.26 111.5 .02"/>
+          <path d="M78.34,0C65.85,0,55.72,10.13,55.72,22.62s10.13,22.62,22.62,22.62,22.62-10.13,22.62-22.62S90.83,0,78.34,0ZM78.34,37.19c-8.03,0-14.57-6.54-14.57-14.57s6.54-14.57,14.57-14.57,14.57,6.54,14.57,14.57-6.54,14.57-14.57,14.57Z"/>
+        </g>
+      </svg>
+      <a href="mailto:mdmizanur.pub@gmail.com">mdmizanur.pub@gmail.com</a>
+      <span class="copyright">© 2026 ZOVA Group. All rights reserved.</span>
+    </div>
+  </footer>
+
 </body>
 </html>
